@@ -14,7 +14,23 @@ module.exports = function(app, fs)
     });
 
     app.get('/about',function(req,res){
-        res.render('about.html');
+
+        var data = "";
+        var request = require('request');
+        request('http://api.carnu.co.kr/combo/allcar/mnfc', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                console.log(body) // Print the google web page.
+                data = body;
+            }
+        })
+
+        console.log(data.result);
+        res.render('about', {
+            title: "MY HOMEPAGE api",
+            data: data.result,
+            length: 5
+        })
+
     });
 
     app.get('/list', function (req, res) {
