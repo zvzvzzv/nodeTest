@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <% include ./header.ejs %>
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+    <ul>
+        <% for(var i=0; i<length; i++){ %>
+      <li>
+          <%= "LOOP" + i %>
+      </li>
+        <% } %>
+    </ul>
+
+    <% if(username){ %>
+    <h2>Welcome! <%= username %> (name: <%= name %>)</h2>
+    <% }else{ %>
+    <h2> Please Login. </h2>
+    <% } %>
+  </body>
+</html>
